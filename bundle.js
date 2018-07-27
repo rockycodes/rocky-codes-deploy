@@ -123,13 +123,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 var App =
 /*#__PURE__*/
@@ -146,6 +146,7 @@ function (_React$Component) {
       rocky: '',
       codes: ''
     };
+    _this.typing = _this.typing.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -154,45 +155,30 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var typing = function typing(str, i) {
-        var newStr = "";
-        var stateObj = {};
-        var timer = setInterval(function () {
-          newStr += str[i];
-          stateObj[str] = newStr;
-          i++;
-
-          _this2.setState(stateObj);
-
-          if (newStr === str) {
-            clearInterval(timer);
-            i = 0;
-          }
-        }, 200);
-      };
-
-      typing("rocky", 0);
+      this.typing("rocky", 0);
       setTimeout(function () {
-        typing("codes", 0);
-      }, 4000); // const rockyStr = "rocky", codesStr = "codes"
-      // let rocky = "", codes = "", i = 0
-      // let timer = setInterval(() => {
-      //     rocky += rockyStr[i]
-      //     i++
-      //     this.setState({rocky})
-      //     if (rocky === rockyStr) {
-      //         clearInterval(timer)
-      //         i=0
-      //     }
-      // }, 200)
-      // setTimeout(() => {
-      //     let timer = setInterval(() => {
-      //         codes += codesStr[i]
-      //         i++
-      //         this.setState({codes})
-      //         if (codes === codesStr) clearInterval(timer)
-      //     }, 200)
-      // }, 4000)
+        _this2.typing("codes", 0);
+      }, 4000);
+    }
+  }, {
+    key: "typing",
+    value: function typing(str, i) {
+      var _this3 = this;
+
+      var newStr = "";
+      var stateObj = {};
+      var timer = setInterval(function () {
+        newStr += str[i];
+        stateObj[str] = newStr;
+        i++;
+
+        _this3.setState(stateObj);
+
+        if (newStr === str) {
+          clearInterval(timer);
+          i = 0;
+        }
+      }, 200);
     }
   }, {
     key: "render",
@@ -287,7 +273,7 @@ var About = function About() {
     src: _headshot.default
   }), _react.default.createElement("p", {
     id: "title"
-  }, "hi, i'm rocky"), _react.default.createElement("p", null, "I'm an educator and social worker turned web developer based in nyc!"), _react.default.createElement("p", null, "I've always loved math, logic, and building things and, after ten years in human services, I decided to reconnect to my left brain and think about other ways to make a difference in the world."), _react.default.createElement("p", null, "From the first time I sat down to write a for-loop, I was hooked. Programming combines my love of problem solving with my love for creating. I attended the Grace Hopper program in NYC and made the full career switch to developer."), _react.default.createElement("p", null, "You can currently find me coding around NYC. I'm especially interested in the intersection of technology and social justice and the ways in which tech can faciliate equity and real social change."), _react.default.createElement("p", null, "Connect with me on ", _react.default.createElement("a", {
+  }, "hi, i'm rocky"), _react.default.createElement("p", null, "I\u2019m a web developer based in NYC with a background in education and social work."), _react.default.createElement("p", null, "I've always loved math, logic, and building -- from slip-n-slides to strong communities. After ten years working with youth in NYC and Oakland, I wanted to reconnect to my left brain and consider new ways to make a difference in the world."), _react.default.createElement("p", null, "I made the full career switch to developer by attending the Grace Hopper program at Fullstack in NYC. The first time I sat down to write a for loop, I was hooked. Programming combines my love of problem solving with my love for creating."), _react.default.createElement("p", null, "You can currently find me coding around NYC in coffee shops, at Fullstack, and at various meetups, like Women Who Code, Progressive HackNight, and Lesbians Who Tech. I'm especially interested in the intersection of tech and social justice, and the ways in which technology can be reimagined to go beyond good intentions and empower new groups of people."), _react.default.createElement("p", null, "Connect with me on ", _react.default.createElement("a", {
     href: "https://github.com/rockycodes/"
   }, "github"), ", ", _react.default.createElement("a", {
     href: "https://www.linkedin.com/in/rachelefine/"
@@ -307,7 +293,7 @@ var About = function About() {
     className: "contentBox"
   }, _react.default.createElement("p", {
     className: "header"
-  }, "fun facts"), _react.default.createElement("ul", null, _react.default.createElement("li", null, "I love circus arts and am an amateur aerialist and juggler"), _react.default.createElement("li", null, "I once took a two month road trip and drove 12,000 miles across the US and Canada, just me and my dog"), _react.default.createElement("li", null, "I'm an avid reader and especially love dystopic and science fiction")))));
+  }, "fun facts"), _react.default.createElement("ul", null, _react.default.createElement("li", null, "I love circus arts, and am an amateur aerialist and juggler."), _react.default.createElement("li", null, "I once took a two month road trip that covered 12,000 miles across the US and Canada, just me and my dog, Stella."), _react.default.createElement("li", null, "I'm an avid reader and especially love dystopic and science fiction.")))));
 };
 
 var _default = About;
@@ -383,7 +369,7 @@ var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_mod
 
 var _index = __webpack_require__(/*! ./index */ "./client/components/index.js");
 
-var _utils = __webpack_require__(/*! ../utils.js */ "./client/utils.js");
+var _projectlist = __webpack_require__(/*! ../projectlist.js */ "./client/projectlist.js");
 
 var _heart = _interopRequireDefault(__webpack_require__(/*! ../../public/imgs/heart.png */ "./public/imgs/heart.png"));
 
@@ -424,7 +410,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Navbar).call(this));
     _this.state = {
       selected: '',
-      projects: _utils.projectList
+      projects: _projectlist.projectList
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.renderSwitch = _this.renderSwitch.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -655,10 +641,10 @@ _reactDom.default.render(_react.default.createElement(_app.default, null), docum
 
 /***/ }),
 
-/***/ "./client/utils.js":
-/*!*************************!*\
-  !*** ./client/utils.js ***!
-  \*************************/
+/***/ "./client/projectlist.js":
+/*!*******************************!*\
+  !*** ./client/projectlist.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -687,7 +673,7 @@ var projectList = [{
   className: 'graceshopper',
   link: 'https://teamawesomee.herokuapp.com/signup',
   title: 'cures for what ails you',
-  description: 'a full-stack e-commerce site that includes product filtering, user signup, login, and admin capabilities, and a working cart model.',
+  description: 'a full-stack mock e-commerce site that includes product filtering, user signup, login, and admin capabilities, and a working cart model.',
   technology: "react \u2022 redux \u2022 stripe api \u2022 google oauth \u2022 express \u2022 sequelize \u2022 postgress \u2022 node \u2022 mocha \u2022 chai",
   prompt: 'click to see deployed site'
 }];
